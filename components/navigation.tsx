@@ -10,9 +10,12 @@ import { useEffect, useState } from 'react';
 
 const navigation = [
   { name: 'Home', href: '/' },
-  { name: 'About', href: '/about' },
-  { name: 'Services', href: '/services' },
-  { name: 'Contact', href: '/contact' },
+  // { name: 'About', href: '/about' },
+  // { name: 'Services', href: '/services' },
+  // { name: 'Contact', href: '/contact' },
+  { name: 'About', href: '/#' },
+  { name: 'Services', href: '/#' },
+  { name: 'Contact', href: '/#' },
 ];
 
 export function Navigation() {

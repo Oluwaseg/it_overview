@@ -203,93 +203,95 @@ export default function HomePage() {
 
   return (
     <div className='pt-16'>
-      <section className='relative bg-gradient-to-br from-background via-muted/50 to-background flex items-center overflow-hidden'>
-        <div className="absolute inset-0 bg-[url('/abstract-technology-network-background.png')] bg-cover bg-center opacity-5"></div>
-
-        <div className='relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 w-full'>
-          <div className='grid grid-cols-1 lg:grid-cols-2 gap-12 items-center'>
-            <div data-aos='fade-right'>
-              <Badge variant='secondary' className='mb-4'>
-                Trusted Since 1997
-              </Badge>
-              <h1 className='text-4xl md:text-6xl font-bold text-foreground mb-6 leading-tight'>
-                {heroSlides[currentSlide].title
-                  .split(' ')
-                  .slice(0, 2)
-                  .join(' ')}
-                <span className='text-secondary block'>
-                  {heroSlides[currentSlide].title.split(' ').slice(2).join(' ')}
-                </span>
-              </h1>
-              <p className='text-xl text-muted-foreground mb-2 font-semibold'>
-                {heroSlides[currentSlide].subtitle}
-              </p>
-              <p className='text-lg text-muted-foreground mb-8 leading-relaxed'>
-                {heroSlides[currentSlide].description}
-              </p>
-              <div className='flex flex-col sm:flex-row gap-4'>
-                <Button size='lg' className='pulse-glow' asChild>
-                  <Link href='/contact'>
-                    {heroSlides[currentSlide].cta}{' '}
-                    <ArrowRight className='ml-2 h-5 w-5' />
-                  </Link>
-                </Button>
-                <Button variant='outline' size='lg' asChild>
-                  <Link href='/services'>Explore Services</Link>
-                </Button>
+      <section className='relative h-screen flex items-center overflow-hidden'>
+        {/* Background Image Slider */}
+        <div className='absolute inset-0'>
+          <div
+            className='flex h-full transition-transform duration-500 ease-in-out'
+            style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+          >
+            {heroSlides.map((slide, index) => (
+              <div key={index} className='w-full h-full flex-shrink-0 relative'>
+                <Image
+                  src={slide.image || '/placeholder.svg'}
+                  alt={`Slide ${index + 1}`}
+                  fill
+                  className='object-cover'
+                  priority={index === 0}
+                />
+                {/* Dark overlay for better text contrast */}
+                <div className='absolute inset-0 bg-black/40' />
               </div>
-            </div>
+            ))}
+          </div>
+        </div>
 
-            <div data-aos='fade-left' className='relative'>
-              <div className='relative overflow-hidden rounded-lg shadow-2xl'>
-                <div
-                  className='flex transition-transform duration-500 ease-in-out'
-                  style={{ transform: `translateX(-${currentSlide * 100}%)` }}
-                >
-                  {heroSlides.map((slide, index) => (
-                    <div key={index} className='w-full flex-shrink-0'>
-                      <Image
-                        src={slide.image || '/placeholder.svg'}
-                        alt={`Slide ${index + 1}`}
-                        width={800}
-                        height={600}
-                        className='w-full h-auto'
-                        priority={index === 0}
-                      />
-                    </div>
-                  ))}
-                </div>
-
-                {/* Slider Controls */}
-                {/* <button
-                  onClick={prevSlide}
-                  className='absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition-colors'
-                >
-                  <ChevronLeft className='h-6 w-6' />
-                </button>
-                <button
-                  onClick={nextSlide}
-                  className='absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition-colors'
-                >
-                  <ChevronRight className='h-6 w-6' />
-                </button> */}
-
-                {/* Slide Indicators */}
-                {/* <div className='absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2'>
-                  {heroSlides.map((_, index) => (
-                    <button
-                      key={index}
-                      onClick={() => setCurrentSlide(index)}
-                      className={`w-3 h-3 rounded-full transition-colors ${
-                        index === currentSlide ? 'bg-white' : 'bg-white/50'
-                      }`}
-                    />
-                  ))}
-                </div> */}
-              </div>
+        {/* Overlay Content */}
+        <div className='relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full'>
+          <div className='max-w-3xl' data-aos='fade-right'>
+            <Badge
+              variant='secondary'
+              className='mb-4 bg-white/90 text-black hover:bg-white'
+            >
+              Trusted Since 1997
+            </Badge>
+            <h1 className='text-4xl md:text-6xl font-bold text-white mb-6 leading-tight'>
+              {heroSlides[currentSlide].title.split(' ').slice(0, 2).join(' ')}
+              <span className='text-secondary block'>
+                {heroSlides[currentSlide].title.split(' ').slice(2).join(' ')}
+              </span>
+            </h1>
+            <p className='text-xl text-white/90 mb-2 font-semibold'>
+              {heroSlides[currentSlide].subtitle}
+            </p>
+            <p className='text-lg text-white/80 mb-8 leading-relaxed max-w-2xl'>
+              {heroSlides[currentSlide].description}
+            </p>
+            <div className='flex flex-col sm:flex-row gap-4'>
+              <Button size='lg' className='pulse-glow' asChild>
+                <Link href='/contact'>
+                  {heroSlides[currentSlide].cta}{' '}
+                  <ArrowRight className='ml-2 h-5 w-5' />
+                </Link>
+              </Button>
+              <Button
+                variant='outline'
+                size='lg'
+                className='bg-white/10 border-white/30 text-white hover:bg-white/20'
+                asChild
+              >
+                <Link href='/services'>Explore Services</Link>
+              </Button>
             </div>
           </div>
         </div>
+
+        {/* Slider Controls */}
+        {/* <button
+          onClick={prevSlide}
+          className="absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full transition-colors"
+        >
+          <ChevronLeft className="h-6 w-6" />
+        </button>
+        <button
+          onClick={nextSlide}
+          className="absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full transition-colors"
+        >
+          <ChevronRight className="h-6 w-6" />
+        </button> */}
+
+        {/* Slide Indicators */}
+        {/* <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex space-x-3">
+          {heroSlides.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentSlide(index)}
+              className={`w-4 h-4 rounded-full transition-colors ${
+                index === currentSlide ? "bg-white" : "bg-white/50"
+              }`}
+            />
+          ))}
+        </div> */}
       </section>
 
       {/* Stats Section */}
