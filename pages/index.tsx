@@ -13,12 +13,9 @@ import {
   ArrowRight,
   Briefcase,
   CheckCircle,
-  ChevronLeft,
-  ChevronRight,
   Cloud,
   Shield,
   Star,
-  TrendingUp,
   Users,
 } from 'lucide-react';
 import Image from 'next/image';
@@ -132,14 +129,38 @@ const services = [
 ];
 
 const industries = [
-  'Healthcare',
-  'Financial Services',
-  'Manufacturing',
-  'Energy & Utilities',
-  'Insurance',
-  'Life Sciences',
-  'Public Sector',
-  'Technology & Media',
+  {
+    name: 'Healthcare',
+    image: '/images/industries/healthcare-medical-technology.png',
+  },
+  {
+    name: 'Financial Services',
+    image: '/images/industries/financial-services-banking.png',
+  },
+  {
+    name: 'Manufacturing',
+    image: '/images/industries/manufacturing-industrial-automation.png',
+  },
+  {
+    name: 'Energy & Utilities',
+    image: '/images/industries/energy-utilities-power-grid.png',
+  },
+  {
+    name: 'Insurance',
+    image: '/images/industries/insurance-risk-management.png',
+  },
+  {
+    name: 'Life Sciences',
+    image: '/images/industries/life-sciences-research-lab.png',
+  },
+  {
+    name: 'Public Sector',
+    image: '/images/industries/public-sector-government.png',
+  },
+  {
+    name: 'Technology & Media',
+    image: '/images/industries/technology-media-communications.png',
+  },
 ];
 
 const stats = [
@@ -182,8 +203,8 @@ export default function HomePage() {
 
   return (
     <div className='pt-16'>
-      <section className='relative bg-gradient-to-br from-background via-muted/50 to-background min-h-screen flex items-center overflow-hidden'>
-        <div className="absolute inset-0 bg-[url('/images/abstract-technology-network-background.png')] bg-cover bg-center opacity-5"></div>
+      <section className='relative bg-gradient-to-br from-background via-muted/50 to-background flex items-center overflow-hidden'>
+        <div className="absolute inset-0 bg-[url('/abstract-technology-network-background.png')] bg-cover bg-center opacity-5"></div>
 
         <div className='relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 w-full'>
           <div className='grid grid-cols-1 lg:grid-cols-2 gap-12 items-center'>
@@ -240,7 +261,7 @@ export default function HomePage() {
                 </div>
 
                 {/* Slider Controls */}
-                <button
+                {/* <button
                   onClick={prevSlide}
                   className='absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition-colors'
                 >
@@ -251,10 +272,10 @@ export default function HomePage() {
                   className='absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition-colors'
                 >
                   <ChevronRight className='h-6 w-6' />
-                </button>
+                </button> */}
 
                 {/* Slide Indicators */}
-                <div className='absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2'>
+                {/* <div className='absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2'>
                   {heroSlides.map((_, index) => (
                     <button
                       key={index}
@@ -264,7 +285,7 @@ export default function HomePage() {
                       }`}
                     />
                   ))}
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
@@ -347,7 +368,7 @@ export default function HomePage() {
           <div className='grid grid-cols-1 lg:grid-cols-2 gap-12 items-center'>
             <div data-aos='fade-right'>
               <Image
-                src='/images/modern-cloud-infrastructure-data-center-servers.png'
+                src='/modern-cloud-infrastructure-data-center-servers.png'
                 alt='Cloud Infrastructure'
                 width={600}
                 height={500}
@@ -429,7 +450,7 @@ export default function HomePage() {
             </div>
             <div data-aos='fade-left'>
               <Image
-                src='/images/cybersecurity-shield-protection-network-security.png'
+                src='/cybersecurity-shield-protection-network-security.png'
                 alt='Cybersecurity Solutions'
                 width={600}
                 height={500}
@@ -493,18 +514,33 @@ export default function HomePage() {
             <h3 className='text-center text-lg font-semibold text-muted-foreground mb-8'>
               Trusted by Industry Leaders
             </h3>
-            <div className='grid grid-cols-2 md:grid-cols-6 gap-8 items-center opacity-60'>
-              {clientLogos.map((client, index) => (
-                <div key={index} className='flex justify-center'>
-                  <Image
-                    src={client.logo || '/placeholder.svg'}
-                    alt={client.name}
-                    width={120}
-                    height={60}
-                    className='grayscale hover:grayscale-0 transition-all duration-300'
-                  />
-                </div>
-              ))}
+            <div className='relative overflow-hidden'>
+              <div className='flex animate-scroll'>
+                {/* First set of logos */}
+                {clientLogos.map((client, index) => (
+                  <div key={`first-${index}`} className='flex-shrink-0 mx-8'>
+                    <Image
+                      src={client.logo || '/placeholder.svg'}
+                      alt={client.name}
+                      width={120}
+                      height={60}
+                      className='grayscale hover:grayscale-0 transition-all duration-300'
+                    />
+                  </div>
+                ))}
+                {/* Duplicate set for seamless loop */}
+                {clientLogos.map((client, index) => (
+                  <div key={`second-${index}`} className='flex-shrink-0 mx-8'>
+                    <Image
+                      src={client.logo || '/placeholder.svg'}
+                      alt={client.name}
+                      width={120}
+                      height={60}
+                      className='grayscale hover:grayscale-0 transition-all duration-300'
+                    />
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
@@ -524,16 +560,29 @@ export default function HomePage() {
           </div>
 
           <div
-            className='grid grid-cols-2 md:grid-cols-4 gap-4'
+            className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6'
             data-aos='fade-up'
           >
             {industries.map((industry, index) => (
               <div
                 key={index}
-                className='p-6 bg-card rounded-lg text-center hover:bg-accent hover:text-accent-foreground transition-all duration-300 cursor-pointer group'
+                className='group bg-card rounded-lg overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer hover:-translate-y-2'
               >
-                <TrendingUp className='h-8 w-8 mx-auto mb-3 text-secondary group-hover:text-accent-foreground' />
-                <h3 className='font-semibold'>{industry}</h3>
+                <div className='aspect-video relative overflow-hidden'>
+                  <Image
+                    src={industry.image || '/placeholder.svg'}
+                    alt={industry.name}
+                    width={400}
+                    height={250}
+                    className='w-full h-full object-cover group-hover:scale-105 transition-transform duration-300'
+                  />
+                  <div className='absolute inset-0 bg-gradient-to-t from-black/60 to-transparent' />
+                  <div className='absolute bottom-4 left-4 right-4'>
+                    <h3 className='text-white font-semibold text-lg'>
+                      {industry.name}
+                    </h3>
+                  </div>
+                </div>
               </div>
             ))}
           </div>
