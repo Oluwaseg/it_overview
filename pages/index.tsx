@@ -368,7 +368,7 @@ export default function HomePage() {
           <div className='grid grid-cols-1 lg:grid-cols-2 gap-12 items-center'>
             <div data-aos='fade-right'>
               <Image
-                src='/modern-cloud-infrastructure-data-center-servers.png'
+                src='/images/modern-cloud-infrastructure-data-center-servers.png'
                 alt='Cloud Infrastructure'
                 width={600}
                 height={500}
@@ -450,7 +450,7 @@ export default function HomePage() {
             </div>
             <div data-aos='fade-left'>
               <Image
-                src='/cybersecurity-shield-protection-network-security.png'
+                src='/images/cybersecurity-shield-protection-network-security.png'
                 alt='Cybersecurity Solutions'
                 width={600}
                 height={500}
