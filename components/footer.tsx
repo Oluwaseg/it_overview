@@ -50,7 +50,7 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  href='/about'
+                  href='/#'
                   className='text-primary-foreground/80 hover:text-primary-foreground transition-colors'
                 >
                   About
@@ -58,7 +58,7 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  href='/services'
+                  href='/#'
                   className='text-primary-foreground/80 hover:text-primary-foreground transition-colors'
                 >
                   Services
@@ -66,7 +66,7 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  href='/contact'
+                  href='/#'
                   className='text-primary-foreground/80 hover:text-primary-foreground transition-colors'
                 >
                   Contact
@@ -75,8 +75,7 @@ export function Footer() {
             </ul>
           </div>
 
-          <div>
-            <h4 className='text-lg font-semibold mb-4'>Contact Info</h4>
+               <h4 className='text-lg font-semibold mb-4'>Contact Info</h4>
             <div className='space-y-2'>
               <div className='flex items-center space-x-2'>
                 <Mail className='h-4 w-4' />
