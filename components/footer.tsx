@@ -6,6 +6,7 @@ export function Footer() {
     <footer className='bg-primary text-primary-foreground'>
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12'>
         <div className='grid grid-cols-1 md:grid-cols-4 gap-8'>
+          {/* Company Info */}
           <div className='col-span-1 md:col-span-2'>
             <h3 className='text-2xl font-bold mb-4'>
               OCI Tech Solutions Limited
@@ -37,6 +38,7 @@ export function Footer() {
             </div>
           </div>
 
+          {/* Quick Links */}
           <div>
             <h4 className='text-lg font-semibold mb-4'>Quick Links</h4>
             <ul className='space-y-2'>
@@ -75,7 +77,9 @@ export function Footer() {
             </ul>
           </div>
 
-               <h4 className='text-lg font-semibold mb-4'>Contact Info</h4>
+          {/* Contact Info - WRAPPED in a div */}
+          <div>
+            <h4 className='text-lg font-semibold mb-4'>Contact Info</h4>
             <div className='space-y-2'>
               <div className='flex items-center space-x-2'>
                 <Mail className='h-4 w-4' />
@@ -99,6 +103,7 @@ export function Footer() {
           </div>
         </div>
 
+        {/* Bottom copyright */}
         <div className='border-t border-primary-foreground/20 mt-8 pt-8 text-center'>
           <p className='text-primary-foreground/80'>
             © 2025 OCI Tech Solutions Limited. All rights reserved.
@@ -107,4 +112,4 @@ export function Footer() {
       </div>
     </footer>
   );
-}
+                  }
