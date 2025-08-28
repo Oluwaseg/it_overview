@@ -314,7 +314,7 @@ export default function HomePage() {
       </section>
 
       {/* Services Section */}
-      <section className='py-20 bg-muted/30'>
+      <section id='services' className='py-20 bg-muted/30'>
         <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
           <div className='text-center mb-16' data-aos='fade-up'>
             <h2 className='text-3xl md:text-4xl font-bold text-foreground mb-4'>
@@ -549,7 +549,7 @@ export default function HomePage() {
       </section>
 
       {/* Industries Section */}
-      <section className='py-20 bg-muted/30'>
+      <section id='industries' className='py-20 bg-muted/30'>
         <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
           <div className='text-center mb-16' data-aos='fade-up'>
             <h2 className='text-3xl md:text-4xl font-bold text-foreground mb-4'>

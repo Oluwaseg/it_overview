@@ -21,65 +21,65 @@ import { useEffect, useState } from 'react';
 const services = [
   {
     title: 'Cloud & Infrastructure',
-    href: '/#cloud-infrastructure',
+    href: '/#services',
     icon: Cloud,
     description: 'Scalable cloud solutions and infrastructure management',
   },
   {
     title: 'Consulting Services',
-    href: '/#consulting-services',
+    href: '/#services',
     icon: Users,
     description: 'Expert IT consulting and strategic guidance',
   },
   {
     title: 'IT Staffing',
-    href: '/#it-staffing',
+    href: '/#services',
     icon: Building2,
     description: 'Professional IT talent acquisition and placement',
   },
   {
     title: 'IT Security',
-    href: '/#it-security',
+    href: '/#services',
     icon: Shield,
     description: 'Comprehensive cybersecurity solutions',
   },
 ];
 
 const industries = [
-  { name: 'Healthcare', href: '/#healthcare', color: 'bg-red-50 text-red-600' },
+  { name: 'Healthcare', href: '/#industries', color: 'bg-red-50 text-red-600' },
   {
     name: 'Financial Services',
-    href: '/#financial-services',
+    href: '/#industries',
     color: 'bg-green-50 text-green-600',
   },
   {
     name: 'Manufacturing',
-    href: '/#manufacturing',
+    href: '/#industries',
     color: 'bg-orange-50 text-orange-600',
   },
   {
     name: 'Energy & Utilities',
-    href: '/#energy-utilities',
+    href: '/#industries',
     color: 'bg-yellow-50 text-yellow-600',
   },
   {
     name: 'Insurance',
-    href: '/#insurance',
+    href: '/#industries',
     color: 'bg-purple-50 text-purple-600',
   },
   {
     name: 'Life Sciences',
-    href: '/#life-sciences',
+    href: '/#industries',
     color: 'bg-teal-50 text-teal-600',
   },
   {
     name: 'Public Sector',
-    href: '/#public-sector',
+    href: '/#industries',
     color: 'bg-indigo-50 text-indigo-600',
   },
   {
     name: 'Technology & Media',
-    href: '/#technology-media',
+    href: '/#industries',
     color: 'bg-pink-50 text-pink-600',
   },
 ];
@@ -98,10 +98,13 @@ export function Navigation() {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const pathname = usePathname();
 
-  const handleAnchorClick = (href: string) => {
+  const handleAnchorClick = (href: string, event?: React.MouseEvent) => {
     if (href.startsWith('/#')) {
       const element = document.getElementById(href.substring(2));
       if (element) {
+        if (event) {
+          event.preventDefault();
+        }
         element.scrollIntoView({ behavior: 'smooth' });
       }
     }
@@ -162,7 +165,7 @@ export function Navigation() {
           'fixed top-0 w-full z-50 transition-all duration-500',
           isScrolled
             ? 'bg-white/80 backdrop-blur-xl shadow-2xl border-b border-gray-200/20'
-            : 'bg-white/5 backdrop-blur-sm'
+            : 'bg-white/5 backdrop-blur-md'
         )}
       >
         <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
@@ -235,12 +238,14 @@ export function Navigation() {
                               {services.map((service, index) => {
                                 const IconComponent = service.icon;
                                 return (
-                                  <button
+                                  <Link
                                     key={service.title}
-                                    onClick={() =>
-                                      handleAnchorClick(service.href)
-                                    }
-                                    className='w-full text-left p-4 rounded-xl hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 transition-all duration-300 group border border-transparent hover:border-blue-100'
+                                    href={service.href}
+                                    onClick={() => {
+                                      setIsOpen(false);
+                                      setActiveDropdown(null);
+                                    }}
+                                    className='block w-full text-left p-4 rounded-xl hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 transition-all duration-300 group border border-transparent hover:border-blue-100'
                                     style={{
                                       animationDelay: `${index * 50}ms`,
                                     }}
@@ -261,7 +266,7 @@ export function Navigation() {
                                         </p>
                                       </div>
                                     </div>
-                                  </button>
+                                  </Link>
                                 );
                               })}
                             </div>
@@ -280,11 +285,13 @@ export function Navigation() {
                             </div>
                             <div className='grid grid-cols-2 gap-2'>
                               {industries.map((industry, index) => (
-                                <button
+                                <Link
                                   key={industry.name}
-                                  onClick={() =>
-                                    handleAnchorClick(industry.href)
-                                  }
+                                  href={industry.href}
+                                  onClick={() => {
+                                    setIsOpen(false);
+                                    setActiveDropdown(null);
+                                  }}
                                   className={cn(
                                     'text-left p-3 rounded-lg transition-all duration-300 hover:scale-105 font-medium text-sm',
                                     industry.color
@@ -292,7 +299,7 @@ export function Navigation() {
                                   style={{ animationDelay: `${index * 30}ms` }}
                                 >
                                   {industry.name}
-                                </button>
+                                </Link>
                               ))}
                             </div>
                           </div>
@@ -404,12 +411,11 @@ export function Navigation() {
                             services.map((service, serviceIndex) => {
                               const IconComponent = service.icon;
                               return (
-                                <button
+                                <Link
                                   key={service.title}
-                                  onClick={() =>
-                                    handleAnchorClick(service.href)
-                                  }
-                                  className='w-full text-left p-4 rounded-xl hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 transition-all duration-300 group'
+                                  href={service.href}
+                                  onClick={() => setIsOpen(false)}
+                                  className='block w-full text-left p-4 rounded-xl hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 transition-all duration-300 group'
                                   style={{
                                     animationDelay: `${serviceIndex * 50}ms`,
                                   }}
@@ -427,17 +433,18 @@ export function Navigation() {
                                       </div>
                                     </div>
                                   </div>
-                                </button>
+                                </Link>
                               );
                             })}
 
                           {item.name === 'Industries' &&
                             industries.map((industry, industryIndex) => (
-                              <button
+                              <Link
                                 key={industry.name}
-                                onClick={() => handleAnchorClick(industry.href)}
+                                href={industry.href}
+                                onClick={() => setIsOpen(false)}
                                 className={cn(
-                                  'w-full text-left px-4 py-3 rounded-lg transition-all duration-300 font-medium',
+                                  'block w-full text-left px-4 py-3 rounded-lg transition-all duration-300 font-medium',
                                   industry.color
                                 )}
                                 style={{
@@ -445,7 +452,7 @@ export function Navigation() {
                                 }}
                               >
                                 {industry.name}
-                              </button>
+                              </Link>
                             ))}
                         </div>
                       </div>
