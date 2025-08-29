@@ -146,7 +146,7 @@ const serviceCategories = [
         icon: Lock,
         name: 'Cyber Transformation',
         description:
-          'Modernize security operations with advanced tools, automation, and 24/images/7 monitoring.',
+          'Modernize security operations with advanced tools, automation, and 24/7 monitoring.',
       },
       {
         icon: Users,
@@ -214,6 +214,15 @@ export default function ServicesPage() {
       {serviceCategories.map((category, categoryIndex) => (
         <section
           key={categoryIndex}
+          id={
+            category.title === 'Cloud & Infrastructure'
+              ? 'cloud-infrastructure'
+              : category.title === 'Consulting Services'
+              ? 'consulting-services'
+              : category.title === 'IT Staffing'
+              ? 'it-staffing'
+              : 'it-security'
+          }
           className={`py-20 overflow-hidden ${
             categoryIndex % 2 === 1 ? 'bg-muted/30' : ''
           }`}
@@ -231,7 +240,8 @@ export default function ServicesPage() {
                   <Image
                     src={category.image || '/placeholder.svg'}
                     alt={`${category.title} illustration`}
-                    fill
+                    width={600}
+                    height={400}
                     className='object-cover'
                   />
                 </div>
@@ -243,13 +253,13 @@ export default function ServicesPage() {
                 data-aos='fade-up'
                 data-aos-delay='200'
               >
-                <div className='flex items-center justify-center lg:justify-start space-x-3 mb-6'>
-                  <category.icon className='h-12 w-12 text-secondary' />
-                  <h2 className='text-3xl md:text-4xl font-bold text-foreground'>
+                <div className='flex items-center justify-center lg:justify-start space-x-2 sm:space-x-3 mb-4 sm:mb-6'>
+                  <category.icon className='h-8 w-8 sm:h-10 sm:w-10 lg:h-12 lg:w-12 text-secondary flex-shrink-0' />
+                  <h2 className='text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground ml-1'>
                     {category.title}
                   </h2>
                 </div>
-                <p className='text-xl text-muted-foreground leading-relaxed mb-8'>
+                <p className='text-base sm:text-lg lg:text-xl text-muted-foreground leading-relaxed mb-6 sm:mb-8'>
                   {category.description}
                 </p>
                 <Button size='lg' className='pulse-glow' asChild>
