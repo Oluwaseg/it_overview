@@ -6,9 +6,12 @@ import { cn } from '@/lib/utils';
 import {
   ArrowRight,
   Briefcase,
+  Building2,
   ChevronDown,
   Cloud,
   Menu,
+  Phone,
+  Search,
   Shield,
   Users,
   X,
@@ -45,50 +48,24 @@ const services = [
   },
 ];
 
-// const industries = [
-//   { name: 'Healthcare', href: '/#industries', color: 'bg-red-50 text-red-600' },
-//   {
-//     name: 'Financial Services',
-//     href: '/#industries',
-//     color: 'bg-green-50 text-green-600',
-//   },
-//   {
-//     name: 'Manufacturing',
-//     href: '/#industries',
-//     color: 'bg-orange-50 text-orange-600',
-//   },
-//   {
-//     name: 'Energy & Utilities',
-//     href: '/#industries',
-//     color: 'bg-yellow-50 text-yellow-600',
-//   },
-//   {
-//     name: 'Insurance',
-//     href: '/#industries',
-//     color: 'bg-purple-50 text-purple-600',
-//   },
-//   {
-//     name: 'Life Sciences',
-//     href: '/#industries',
-//     color: 'bg-teal-50 text-teal-600',
-//   },
-//   {
-//     name: 'Public Sector',
-//     href: '/#industries',
-//     color: 'bg-indigo-50 text-indigo-600',
-//   },
-//   {
-//     name: 'Technology & Media',
-//     href: '/#industries',
-//     color: 'bg-pink-50 text-pink-600',
-//   },
-// ];
+const industries = [
+  { name: 'Healthcare', href: '/industries#healthcare' },
+  { name: 'Financial Services', href: '/industries#financial-services' },
+  { name: 'Manufacturing', href: '/industries#manufacturing' },
+  { name: 'Energy & Utilities', href: '/industries#energy-utilities' },
+  { name: 'Insurance', href: '/industries#insurance' },
+  { name: 'Life Sciences', href: '/industries#life-sciences' },
+  { name: 'Public Sector', href: '/industries#public-sector' },
+  { name: 'Technology & Media', href: '/industries#technology-media' },
+];
 
 const navigation = [
   { name: 'Home', href: '/' },
   { name: 'About', href: '/about' },
   { name: 'Services', href: '/services', hasDropdown: true },
-  // { name: 'Industries', href: '#', hasDropdown: true },
+  { name: 'Industries', href: '#', hasDropdown: true },
+  { name: 'News Room', href: '/news' },
+  { name: 'Career', href: '/career' },
   { name: 'Contact', href: '/contact' },
 ];
 
@@ -96,6 +73,8 @@ export function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
   const pathname = usePathname();
 
   const handleAnchorClick = (href: string, event?: React.MouseEvent) => {
@@ -123,6 +102,20 @@ export function Navigation() {
   const toggleMobileMenu = () => {
     setIsOpen(!isOpen);
     setActiveDropdown(null);
+  };
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      window.location.href = `/services?search=${encodeURIComponent(
+        searchQuery.trim()
+      )}`;
+    }
+  };
+
+  const toggleSearch = () => {
+    setIsSearchOpen(!isSearchOpen);
+    setSearchQuery('');
   };
 
   useEffect(() => {
@@ -169,163 +162,310 @@ export function Navigation() {
         )}
       >
         <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
-          <div className='flex justify-between items-center h-20'>
-            <Link href='/' className='flex items-center space-x-3 group'>
-              <div className='w-10 h-10 relative transition-all duration-500 group-hover:scale-110 group-hover:rotate-12'>
-                <div className='absolute inset-0 bg-gradient-to-br from-secondary to-accent rounded-xl opacity-20 group-hover:opacity-30 transition-opacity duration-300' />
-                <Image
-                  src='/images/logo.png'
-                  alt='OCI Tech'
-                  fill
-                  className='object-contain relative z-10'
-                />
-              </div>
-              <div className='flex flex-col'>
-                <span className='text-xl font-bold bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent group-hover:from-secondary group-hover:to-accent transition-all duration-500'>
-                  OCI Tech Solutions
-                </span>
-                <span className='text-xs text-muted-foreground font-medium tracking-wide'>
-                  Innovation Delivered
-                </span>
-              </div>
-            </Link>
+          <div className='flex items-center h-20'>
+            {/* Logo Section */}
+            <div className='flex-shrink-0'>
+              <Link href='/' className='flex items-center space-x-3 group'>
+                <div className='w-10 h-10 relative transition-all duration-500 group-hover:scale-110 group-hover:rotate-12'>
+                  <div className='absolute inset-0 bg-gradient-to-br from-secondary to-accent rounded-xl opacity-20 group-hover:opacity-30 transition-opacity duration-300' />
+                  <Image
+                    src='/images/logo.png'
+                    alt='OCI Tech'
+                    fill
+                    className='object-contain relative z-10'
+                  />
+                </div>
+                <div className='flex flex-col'>
+                  <span className='text-xl font-bold bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent group-hover:from-secondary group-hover:to-accent transition-all duration-500'>
+                    OCI Tech Solutions
+                  </span>
+                  <span className='text-xs text-muted-foreground font-medium tracking-wide'>
+                    Innovation Delivered
+                  </span>
+                </div>
+              </Link>
+            </div>
 
-            <div className='hidden lg:flex items-center space-x-2'>
-              {navigation.map((item) => (
-                <div key={item.name} className='relative' data-dropdown>
-                  {item.hasDropdown ? (
-                    <div className='relative'>
-                      <button
-                        data-dropdown-trigger
-                        onClick={(e) => toggleDropdown(item.name, e)}
-                        className={cn(
-                          'flex items-center space-x-2 px-6 py-3 rounded-xl text-sm font-semibold transition-all duration-300 relative overflow-hidden group',
-                          'hover:bg-secondary/10 hover:text-secondary',
-                          activeDropdown === item.name
-                            ? 'bg-secondary/10 text-secondary shadow-lg'
-                            : 'text-foreground hover:text-secondary'
-                        )}
-                      >
-                        <span className='relative z-10'>{item.name}</span>
-                        <ChevronDown
+            {/* Navigation Items - Centered */}
+            <div className='hidden lg:flex flex-1 justify-center'>
+              <div className='flex items-center space-x-1'>
+                {navigation.map((item) => (
+                  <div key={item.name} className='relative' data-dropdown>
+                    {item.hasDropdown ? (
+                      <div className='relative'>
+                        <button
+                          data-dropdown-trigger
+                          onClick={(e) => toggleDropdown(item.name, e)}
                           className={cn(
-                            'w-4 h-4 transition-all duration-300 relative z-10',
-                            activeDropdown === item.name && 'rotate-180'
+                            'flex items-center space-x-2 px-4 py-2.5 rounded-lg text-sm font-medium transition-all duration-300 relative overflow-hidden group',
+                            'hover:bg-secondary/10 hover:text-secondary',
+                            activeDropdown === item.name
+                              ? 'bg-secondary/10 text-secondary shadow-lg'
+                              : 'text-foreground hover:text-secondary'
                           )}
-                        />
-                        <div className='absolute inset-0 bg-gradient-to-r from-secondary to-accent opacity-0 group-hover:opacity-5 transition-opacity duration-300' />
-                      </button>
+                        >
+                          <span className='relative z-10'>{item.name}</span>
+                          <ChevronDown
+                            className={cn(
+                              'w-4 h-4 transition-all duration-300 relative z-10',
+                              activeDropdown === item.name && 'rotate-180'
+                            )}
+                          />
+                          <div className='absolute inset-0 bg-gradient-to-r from-secondary to-accent opacity-0 group-hover:opacity-5 transition-opacity duration-300' />
+                        </button>
 
-                      <div
-                        className={cn(
-                          'absolute top-full right-0 mt-3 bg-popover/98 backdrop-blur-xl rounded-2xl shadow-2xl border border-border transition-all duration-500 origin-top-right',
-                          activeDropdown === item.name
-                            ? 'opacity-100 scale-100 translate-y-0'
-                            : 'opacity-0 scale-95 -translate-y-4 pointer-events-none'
-                        )}
-                      >
-                        {item.name === 'Services' && (
-                          <div className='p-6 w-96'>
-                            <div className='mb-6'>
-                              <h3 className='text-xl font-bold text-popover-foreground mb-2'>
-                                Our Services
-                              </h3>
-                              <p className='text-sm text-muted-foreground'>
-                                Comprehensive IT solutions for your business
-                              </p>
+                        {/* Dropdown Content */}
+                        <div
+                          className={cn(
+                            'absolute top-full right-0 mt-3 bg-popover/98 backdrop-blur-xl rounded-2xl shadow-2xl border border-border transition-all duration-500 origin-top-right',
+                            activeDropdown === item.name
+                              ? 'opacity-100 scale-100 translate-y-0'
+                              : 'opacity-0 scale-95 -translate-y-4 pointer-events-none'
+                          )}
+                        >
+                          {item.name === 'Services' && (
+                            <div className='p-6 w-96'>
+                              <div className='mb-6'>
+                                <h3 className='text-xl font-bold text-popover-foreground mb-2'>
+                                  Our Services
+                                </h3>
+                                <p className='text-sm text-muted-foreground'>
+                                  Comprehensive IT solutions for your business
+                                </p>
+                              </div>
+                              <div className='space-y-1'>
+                                {services.map((service, index) => {
+                                  const IconComponent = service.icon;
+                                  return (
+                                    <Link
+                                      key={service.title}
+                                      href={service.href}
+                                      onClick={() => {
+                                        setIsOpen(false);
+                                        setActiveDropdown(null);
+                                      }}
+                                      className='block w-full text-left p-4 rounded-xl hover:bg-secondary/10 transition-all duration-300 group border border-transparent hover:border-secondary/20'
+                                      style={{
+                                        animationDelay: `${index * 50}ms`,
+                                      }}
+                                    >
+                                      <div className='flex items-start space-x-4'>
+                                        <div className='p-3 bg-gradient-to-br from-secondary to-accent rounded-xl text-secondary-foreground group-hover:scale-110 transition-transform duration-300 shadow-lg'>
+                                          <IconComponent className='w-5 h-5' />
+                                        </div>
+                                        <div className='flex-1 min-w-0'>
+                                          <div className='flex items-center justify-between mb-1'>
+                                            <h4 className='font-semibold text-popover-foreground group-hover:text-secondary transition-colors duration-300 text-base'>
+                                              {service.title}
+                                            </h4>
+                                            <ArrowRight className='w-4 h-4 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300 text-secondary flex-shrink-0' />
+                                          </div>
+                                          <p className='text-sm text-muted-foreground leading-relaxed'>
+                                            {service.description}
+                                          </p>
+                                        </div>
+                                      </div>
+                                    </Link>
+                                  );
+                                })}
+                              </div>
+                              <div className='mt-6 pt-4 border-t border-border'>
+                                <Link
+                                  href='/services'
+                                  className='flex items-center justify-center space-x-2 w-full py-3 px-4 bg-gradient-to-r from-secondary to-accent text-secondary-foreground rounded-xl font-semibold hover:shadow-lg transition-all duration-300 group'
+                                  onClick={() => {
+                                    setIsOpen(false);
+                                    setActiveDropdown(null);
+                                  }}
+                                >
+                                  <span>View All Services</span>
+                                  <ArrowRight className='w-4 h-4 group-hover:translate-x-1 transition-transform duration-300' />
+                                </Link>
+                              </div>
                             </div>
-                            <div className='space-y-1'>
-                              {services.map((service, index) => {
-                                const IconComponent = service.icon;
-                                return (
+                          )}
+                          {item.name === 'Industries' && (
+                            <div className='p-6 w-96'>
+                              <div className='mb-6'>
+                                <h3 className='text-xl font-bold text-popover-foreground mb-2'>
+                                  Industries We Serve
+                                </h3>
+                                <p className='text-sm text-muted-foreground'>
+                                  Specialized solutions across diverse sectors
+                                </p>
+                              </div>
+                              <div className='grid grid-cols-2 gap-2'>
+                                {industries.map((industry, index) => (
                                   <Link
-                                    key={service.title}
-                                    href={service.href}
-                                    onClick={() => {
-                                      setIsOpen(false);
-                                      setActiveDropdown(null);
+                                    key={industry.name}
+                                    href={industry.href}
+                                    onClick={(e) => {
+                                      handleAnchorClick(industry.href, e);
                                     }}
                                     className='block w-full text-left p-4 rounded-xl hover:bg-secondary/10 transition-all duration-300 group border border-transparent hover:border-secondary/20'
                                     style={{
                                       animationDelay: `${index * 50}ms`,
                                     }}
                                   >
-                                    <div className='flex items-start space-x-4'>
-                                      <div className='p-3 bg-gradient-to-br from-secondary to-accent rounded-xl text-secondary-foreground group-hover:scale-110 transition-transform duration-300 shadow-lg'>
-                                        <IconComponent className='w-5 h-5' />
+                                    <div className='flex items-center space-x-3'>
+                                      <div className='p-2 bg-gradient-to-br from-secondary to-accent rounded-lg text-secondary-foreground group-hover:scale-110 transition-transform duration-300'>
+                                        <Building2 className='w-4 h-4' />
                                       </div>
                                       <div className='flex-1 min-w-0'>
-                                        <div className='flex items-center justify-between mb-1'>
-                                          <h4 className='font-semibold text-popover-foreground group-hover:text-secondary transition-colors duration-300 text-base'>
-                                            {service.title}
-                                          </h4>
-                                          <ArrowRight className='w-4 h-4 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300 text-secondary flex-shrink-0' />
-                                        </div>
-                                        <p className='text-sm text-muted-foreground leading-relaxed'>
-                                          {service.description}
-                                        </p>
+                                        <h4 className='font-semibold text-popover-foreground group-hover:text-secondary transition-colors duration-300 text-sm'>
+                                          {industry.name}
+                                        </h4>
                                       </div>
                                     </div>
                                   </Link>
-                                );
-                              })}
+                                ))}
+                              </div>
+                              <div className='mt-6 pt-4 border-t border-border'>
+                                <Link
+                                  href='/industries'
+                                  className='flex items-center justify-center space-x-2 w-full py-3 px-4 bg-gradient-to-r from-secondary to-accent text-secondary-foreground rounded-xl font-semibold hover:shadow-lg transition-all duration-300 group'
+                                  onClick={() => {
+                                    setIsOpen(false);
+                                    setActiveDropdown(null);
+                                  }}
+                                >
+                                  <span>View All Industries</span>
+                                  <ArrowRight className='w-4 h-4 group-hover:translate-x-1 transition-transform duration-300' />
+                                </Link>
+                              </div>
                             </div>
-                            <div className='mt-6 pt-4 border-t border-border'>
-                              <Link
-                                href='/services'
-                                className='flex items-center justify-center space-x-2 w-full py-3 px-4 bg-gradient-to-r from-secondary to-accent text-secondary-foreground rounded-xl font-semibold hover:shadow-lg transition-all duration-300 group'
-                                onClick={() => {
-                                  setIsOpen(false);
-                                  setActiveDropdown(null);
-                                }}
-                              >
-                                <span>View All Services</span>
-                                <ArrowRight className='w-4 h-4 group-hover:translate-x-1 transition-transform duration-300' />
-                              </Link>
-                            </div>
-                          </div>
-                        )}
+                          )}
+                        </div>
                       </div>
-                    </div>
-                  ) : (
-                    <Link
-                      href={item.href}
-                      className={cn(
-                        'px-6 py-3 rounded-xl text-sm font-semibold transition-all duration-300 relative overflow-hidden group',
-                        pathname === item.href
-                          ? 'bg-gradient-to-r from-secondary to-accent text-secondary-foreground shadow-lg'
-                          : 'text-foreground hover:bg-secondary/10 hover:text-secondary'
-                      )}
-                    >
-                      <span className='relative z-10'>{item.name}</span>
-                      {pathname !== item.href && (
-                        <div className='absolute inset-0 bg-gradient-to-r from-secondary to-accent opacity-0 group-hover:opacity-5 transition-opacity duration-300' />
-                      )}
-                    </Link>
-                  )}
-                </div>
-              ))}
+                    ) : (
+                      <Link
+                        href={item.href}
+                        className={cn(
+                          'px-4 py-2.5 rounded-lg text-sm font-medium transition-all duration-300 relative overflow-hidden group',
+                          pathname === item.href
+                            ? 'bg-gradient-to-r from-secondary to-accent text-secondary-foreground shadow-lg'
+                            : 'text-foreground hover:bg-secondary/10 hover:text-secondary'
+                        )}
+                      >
+                        <span className='relative z-10'>{item.name}</span>
+                        {pathname !== item.href && (
+                          <div className='absolute inset-0 bg-gradient-to-r from-secondary to-accent opacity-0 group-hover:opacity-5 transition-opacity duration-300' />
+                        )}
+                      </Link>
+                    )}
+                  </div>
+                ))}
+              </div>
             </div>
 
-            <button
-              onClick={toggleMobileMenu}
-              className='lg:hidden p-3 rounded-xl hover:bg-gray-100/80 transition-all duration-300 group'
-            >
-              <div className='relative w-6 h-6'>
-                <Menu
+            {/* Right Section - Search and CTA */}
+            <div className='hidden lg:flex items-center space-x-3 flex-shrink-0'>
+              <div className='relative'>
+                <button
+                  onClick={toggleSearch}
+                  className='p-2.5 rounded-lg hover:bg-secondary/10 hover:text-secondary transition-all duration-300 group'
+                >
+                  <Search className='w-5 h-5' />
+                </button>
+
+                {/* Search dropdown */}
+                <div
                   className={cn(
-                    'w-6 h-6 absolute inset-0 transition-all duration-300',
-                    isOpen ? 'opacity-0 rotate-180' : 'opacity-100 rotate-0'
+                    'absolute top-full right-0 mt-3 bg-popover/98 backdrop-blur-xl rounded-2xl shadow-2xl border border-border transition-all duration-300 origin-top-right',
+                    isSearchOpen
+                      ? 'opacity-100 scale-100 translate-y-0'
+                      : 'opacity-0 scale-95 -translate-y-4 pointer-events-none'
                   )}
-                />
-                <X
-                  className={cn(
-                    'w-6 h-6 absolute inset-0 transition-all duration-300',
-                    isOpen ? 'opacity-100 rotate-0' : 'opacity-0 -rotate-180'
-                  )}
-                />
+                >
+                  <form onSubmit={handleSearch} className='p-4 w-80'>
+                    <div className='flex items-center space-x-2'>
+                      <div className='flex-1 relative'>
+                        <Search className='absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground' />
+                        <input
+                          type='text'
+                          value={searchQuery}
+                          onChange={(e) => setSearchQuery(e.target.value)}
+                          placeholder='Search services, industries...'
+                          className='w-full pl-10 pr-4 py-2.5 bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent'
+                          autoFocus
+                        />
+                      </div>
+                      <button
+                        type='submit'
+                        className='px-4 py-2.5 bg-gradient-to-r from-secondary to-accent text-secondary-foreground rounded-lg font-medium hover:shadow-lg transition-all duration-300'
+                      >
+                        Search
+                      </button>
+                    </div>
+                  </form>
+                </div>
               </div>
-            </button>
+
+              <Link
+                href='/contact'
+                className='flex items-center space-x-2 px-5 py-2.5 bg-gradient-to-r from-secondary to-accent text-secondary-foreground rounded-lg font-medium hover:shadow-lg transition-all duration-300 group'
+              >
+                <Phone className='w-4 h-4' />
+                <span>Get in Touch</span>
+              </Link>
+            </div>
+
+            {/* Mobile Right Section - Search and Menu */}
+            <div className='lg:hidden flex items-center space-x-2 ml-auto'>
+              <button
+                onClick={toggleSearch}
+                className='p-2.5 rounded-lg hover:bg-secondary/10 hover:text-secondary transition-all duration-300'
+              >
+                <Search className='w-5 h-5' />
+              </button>
+              <button
+                onClick={toggleMobileMenu}
+                className='p-2.5 rounded-lg hover:bg-secondary/10 hover:text-secondary transition-all duration-300'
+              >
+                <div className='relative w-6 h-6'>
+                  <Menu
+                    className={cn(
+                      'w-6 h-6 absolute inset-0 transition-all duration-300',
+                      isOpen ? 'opacity-0 rotate-180' : 'opacity-100 rotate-0'
+                    )}
+                  />
+                  <X
+                    className={cn(
+                      'w-6 h-6 absolute inset-0 transition-all duration-300',
+                      isOpen ? 'opacity-100 rotate-0' : 'opacity-0 -rotate-180'
+                    )}
+                  />
+                </div>
+              </button>
+            </div>
+          </div>
+
+          <div
+            className={cn(
+              'lg:hidden border-t border-border transition-all duration-300 overflow-hidden',
+              isSearchOpen ? 'max-h-20 opacity-100' : 'max-h-0 opacity-0'
+            )}
+          >
+            <form onSubmit={handleSearch} className='p-4'>
+              <div className='flex items-center space-x-2'>
+                <div className='flex-1 relative'>
+                  <Search className='absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground' />
+                  <input
+                    type='text'
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    placeholder='Search services, industries...'
+                    className='w-full pl-10 pr-4 py-2.5 bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent'
+                  />
+                </div>
+                <button
+                  type='submit'
+                  className='px-4 py-2.5 bg-gradient-to-r from-secondary to-accent text-secondary-foreground rounded-lg font-medium hover:shadow-lg transition-all duration-300'
+                >
+                  Search
+                </button>
+              </div>
+            </form>
           </div>
         </div>
       </nav>
@@ -417,6 +557,31 @@ export function Navigation() {
                                 </Link>
                               );
                             })}
+                          {item.name === 'Industries' &&
+                            industries.map((industry, industryIndex) => (
+                              <Link
+                                key={industry.name}
+                                href={industry.href}
+                                onClick={(e) => {
+                                  handleAnchorClick(industry.href, e);
+                                }}
+                                className='block w-full text-left p-4 rounded-xl hover:bg-secondary/10 transition-all duration-300 group'
+                                style={{
+                                  animationDelay: `${industryIndex * 50}ms`,
+                                }}
+                              >
+                                <div className='flex items-center space-x-3'>
+                                  <div className='p-3 bg-gradient-to-br from-secondary to-accent rounded-xl text-secondary-foreground'>
+                                    <Building2 className='w-4 h-4' />
+                                  </div>
+                                  <div>
+                                    <div className='font-semibold text-foreground group-hover:text-secondary transition-colors duration-300'>
+                                      {industry.name}
+                                    </div>
+                                  </div>
+                                </div>
+                              </Link>
+                            ))}
                         </div>
                       </div>
                     </div>
