@@ -68,7 +68,7 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  href='/#'
+                  href='/contact'
                   className='text-primary-foreground/80 hover:text-primary-foreground transition-colors'
                 >
                   Contact
@@ -77,27 +77,77 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Contact Info - WRAPPED in a div */}
           <div>
             <h4 className='text-lg font-semibold mb-4'>Contact Info</h4>
-            <div className='space-y-2'>
-              <div className='flex items-center space-x-2'>
-                <Mail className='h-4 w-4' />
-                <span className='text-primary-foreground/80'>
-                  info@ocitechsolutions.com
-                </span>
+            <div className='space-y-3'>
+              <div className='flex items-start space-x-2'>
+                <Mail className='h-4 w-4 mt-0.5' />
+                <div className='text-sm'>
+                  <div className='text-primary-foreground/80'>
+                    <a
+                      href='mailto:info@oci.com'
+                      className='hover:text-primary-foreground transition-colors'
+                    >
+                      info@oci.com
+                    </a>
+                  </div>
+                  <div className='text-primary-foreground/80'>
+                    <a
+                      href='mailto:hr@oci.com'
+                      className='hover:text-primary-foreground transition-colors'
+                    >
+                      hr@oci.com
+                    </a>
+                  </div>
+                  <div className='text-primary-foreground/80'>
+                    <a
+                      href='mailto:sales@oci.com'
+                      className='hover:text-primary-foreground transition-colors'
+                    >
+                      sales@oci.com
+                    </a>
+                  </div>
+                </div>
               </div>
-              <div className='flex items-center space-x-2'>
-                <Phone className='h-4 w-4' />
-                <span className='text-primary-foreground/80'>
-                  +234 (XXX) XXX-XXXX
-                </span>
+              <div className='flex items-start space-x-2'>
+                <Phone className='h-4 w-4 mt-0.5' />
+                <div className='text-sm'>
+                  <div className='text-primary-foreground/80'>
+                    Customer Support:{' '}
+                    <a
+                      href='tel:+2349016101268'
+                      className='hover:text-primary-foreground transition-colors'
+                    >
+                      09016101268
+                    </a>
+                  </div>
+                  <div className='text-primary-foreground/80'>
+                    HR:{' '}
+                    <a
+                      href='tel:+2348035891932'
+                      className='hover:text-primary-foreground transition-colors'
+                    >
+                      08035891932
+                    </a>
+                  </div>
+                </div>
               </div>
-              <div className='flex items-center space-x-2'>
-                <MapPin className='h-4 w-4' />
-                <span className='text-primary-foreground/80'>
-                  Lagos, Nigeria
-                </span>
+              <div className='flex items-start space-x-2'>
+                <MapPin className='h-4 w-4 mt-0.5' />
+                <div className='text-sm'>
+                  <div className='text-primary-foreground/80 font-medium'>
+                    Head Office:
+                  </div>
+                  <div className='text-primary-foreground/80'>
+                    Block 2, Road 2, Diamond Estate
+                  </div>
+                  <div className='text-primary-foreground/80'>
+                    Lasu-Igando Expressway, Isheri
+                  </div>
+                  <div className='text-primary-foreground/80'>
+                    Lagos State, Nigeria 230001
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -112,4 +162,4 @@ export function Footer() {
       </div>
     </footer>
   );
-                  }
+}

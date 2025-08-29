@@ -40,7 +40,7 @@ export function ScrollToTop() {
       )}
       aria-label='Scroll to top'
     >
-      <ChevronUp className='h-5 w-5' />
+      <ChevronUp className='h-8 w-8' />
     </Button>
   );
 }

@@ -1,5 +1,6 @@
 import { Footer } from '@/components/footer';
 import { Navigation } from '@/components/navigation';
+import { ScrollToTop } from '@/components/scroll-to-top';
 import { GeistMono } from 'geist/font/mono';
 import { GeistSans } from 'geist/font/sans';
 import type { AppProps } from 'next/app';
@@ -55,6 +56,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           <Component {...pageProps} />
         </main>
         <Footer />
+        <ScrollToTop />
       </div>
     </>
   );

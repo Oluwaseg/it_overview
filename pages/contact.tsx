@@ -15,25 +15,65 @@ const contactInfo = [
     icon: Mail,
     title: 'Email Us',
     details: [
-      { label: 'Sales & Solutions', value: 'sales@ocitechsolutions.com' },
-      { label: 'General Inquiries', value: 'info@ocitechsolutions.com' },
-      { label: 'HR & Employment', value: 'hr@ocitechsolutions.com' },
+      {
+        label: 'General Inquiries',
+        value: 'info@oci.com',
+        link: 'mailto:info@oci.com',
+      },
+      {
+        label: 'Sales & Solutions',
+        value: 'sales@oci.com',
+        link: 'mailto:sales@oci.com',
+      },
+      {
+        label: 'HR & Employment',
+        value: 'hr@oci.com',
+        link: 'mailto:hr@oci.com',
+      },
+      {
+        label: 'Customer Support',
+        value: 'support@oci.com',
+        link: 'mailto:support@oci.com',
+      },
     ],
   },
   {
     icon: Phone,
     title: 'Call Us',
     details: [
-      { label: 'Main Office', value: '+234 (XXX) XXX-XXXX' },
-      { label: 'Support Line', value: '+234 (XXX) XXX-XXXX' },
+      {
+        label: 'Customer Support',
+        value: '09016101268',
+        link: 'tel:+2349016101268',
+      },
+      {
+        label: 'HR Department',
+        value: '08035891932',
+        link: 'tel:+2348035891932',
+      },
     ],
   },
   {
     icon: MapPin,
     title: 'Visit Us',
     details: [
-      { label: 'Corporate Headquarters', value: 'Lagos, Nigeria' },
-      { label: 'Business Hours', value: 'Mon - Fri: 8:00 AM - 6:00 PM' },
+      {
+        label: 'Head Office',
+        value:
+          'Block 2, Road 2, Diamond Estate, Lasu-Igando Expressway, Isheri, Lagos State, Nigeria 230001',
+        link: undefined,
+      },
+      {
+        label: 'Branch Office',
+        value:
+          'Plot 9, Nse Iwok Street, Olugbode Lafenwa-Otta, Ogun State, Nigeria',
+        link: undefined,
+      },
+      {
+        label: 'Business Hours',
+        value: 'Mon - Fri: 8:00 AM - 6:00 PM',
+        link: undefined,
+      },
     ],
   },
 ];
@@ -147,7 +187,16 @@ export default function ContactPage() {
                         <p className='text-sm text-muted-foreground'>
                           {detail.label}
                         </p>
-                        <p className='font-medium'>{detail.value}</p>
+                        {detail.link ? (
+                          <a
+                            href={detail.link}
+                            className='font-medium text-sm hover:text-primary transition-colors'
+                          >
+                            {detail.value}
+                          </a>
+                        ) : (
+                          <p className='font-medium text-sm'>{detail.value}</p>
+                        )}
                       </div>
                     ))}
                   </div>
@@ -313,10 +362,10 @@ export default function ContactPage() {
         <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
           <div className='text-center mb-12' data-aos='fade-up'>
             <h2 className='text-3xl md:text-4xl font-bold text-foreground mb-4'>
-              Our Location
+              Our Locations
             </h2>
             <p className='text-xl text-muted-foreground'>
-              Visit our corporate headquarters in Lagos, Nigeria
+              Visit our offices in Lagos and Ogun State, Nigeria
             </p>
           </div>
 
@@ -339,12 +388,35 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className='text-xl font-semibold text-foreground mb-2'>
-                      Corporate Headquarters
+                      Head Office
                     </h3>
-                    <p className='text-muted-foreground'>Lagos, Nigeria</p>
-                    <p className='text-sm text-muted-foreground mt-1'>
-                      Full address available upon request
+                    <p className='text-muted-foreground'>
+                      Block 2, Road 2, Diamond Estate
                     </p>
+                    <p className='text-muted-foreground'>
+                      Lasu-Igando Expressway, Isheri
+                    </p>
+                    <p className='text-muted-foreground'>
+                      Lagos State, Nigeria 230001
+                    </p>
+                  </div>
+                </div>
+
+                <div className='flex items-start space-x-4'>
+                  <div className='p-3 bg-secondary/10 rounded-lg'>
+                    <MapPin className='h-6 w-6 text-secondary' />
+                  </div>
+                  <div>
+                    <h3 className='text-xl font-semibold text-foreground mb-2'>
+                      Branch Office
+                    </h3>
+                    <p className='text-muted-foreground'>
+                      Plot 9, Nse Iwok Street
+                    </p>
+                    <p className='text-muted-foreground'>
+                      Olugbode Lafenwa-Otta
+                    </p>
+                    <p className='text-muted-foreground'>Ogun State, Nigeria</p>
                   </div>
                 </div>
 
@@ -375,9 +447,31 @@ export default function ContactPage() {
                       Quick Contact
                     </h3>
                     <p className='text-muted-foreground'>
-                      info@ocitechsolutions.com
+                      <a
+                        href='mailto:info@oci.com'
+                        className='hover:text-foreground transition-colors'
+                      >
+                        info@oci.com
+                      </a>
                     </p>
-                    <p className='text-muted-foreground'>+234 (XXX) XXX-XXXX</p>
+                    <p className='text-muted-foreground'>
+                      Customer Support:{' '}
+                      <a
+                        href='tel:+2349016101268'
+                        className='hover:text-foreground transition-colors'
+                      >
+                        09016101268
+                      </a>
+                    </p>
+                    <p className='text-muted-foreground'>
+                      HR:{' '}
+                      <a
+                        href='tel:+2348035891932'
+                        className='hover:text-foreground transition-colors'
+                      >
+                        08035891932
+                      </a>
+                    </p>
                   </div>
                 </div>
               </div>
