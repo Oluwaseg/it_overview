@@ -1,12 +1,23 @@
 import { Footer } from '@/components/footer';
 import { Navigation } from '@/components/navigation';
 import { ScrollToTop } from '@/components/scroll-to-top';
-import { GeistMono } from 'geist/font/mono';
-import { GeistSans } from 'geist/font/sans';
+import defaultSEO from '@/lib/seo-config';
+import { DefaultSeo } from 'next-seo';
 import type { AppProps } from 'next/app';
+import { Montserrat, Poppins } from 'next/font/google';
 import Head from 'next/head';
 import { useEffect } from 'react';
 import '../public/styles/globals.css';
+const poppins = Poppins({
+  subsets: ['latin'],
+  variable: '--font-poppins',
+  weight: ['400', '700'],
+});
+const montserrat = Montserrat({
+  subsets: ['latin'],
+  variable: '--font-montserrat',
+  weight: ['400', '700'],
+});
 
 declare global {
   interface Window {
@@ -42,14 +53,12 @@ function MyApp({ Component, pageProps }: AppProps) {
           href='https://unpkg.com/aos@2.3.1/dist/aos.css'
           rel='stylesheet'
         />
-        <title>OCI Tech Solutions Limited - Enterprise IT Services</title>
-        <meta
-          name='description'
-          content='Leading IT solutions provider since 1997. Cloud infrastructure, consulting, staffing, and security services for enterprises across multiple industries.'
-        />
+        <link rel='icon' href='/images/logo.png' type='image/png' />
       </Head>
+      {/* Default SEO config */}
+      <DefaultSeo {...defaultSEO} />
       <div
-        className={`font-sans antialiased ${GeistSans.variable} ${GeistMono.variable}`}
+        className={`font-sans antialiased ${poppins.variable} ${montserrat.variable}`}
       >
         <Navigation />
         <main className='min-h-screen overflow-hidden'>

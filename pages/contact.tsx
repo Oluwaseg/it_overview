@@ -13,7 +13,7 @@ import { useEffect, useState } from 'react';
 const contactInfo = [
   {
     icon: Mail,
-    title: 'Email Us',
+    // title: 'Email Us',
     details: [
       {
         label: 'General Inquiries',
@@ -39,7 +39,7 @@ const contactInfo = [
   },
   {
     icon: Phone,
-    title: 'Call Us',
+    // title: 'Call Us',
     details: [
       {
         label: 'Customer Support',

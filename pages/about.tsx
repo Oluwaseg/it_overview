@@ -156,13 +156,14 @@ export default function AboutPage() {
             >
               <CardContent className='p-6'>
                 <img
-                  src='/images/ceo-professional-headshot.png'
+                  src='/images/IMG-20250831-WA0002.jpg'
                   alt='CEO'
-                  className='w-32 h-32 rounded-full mx-auto mb-4 object-cover'
+                  className='w-32 h-32 rounded-full mx-auto mb-4 object-cover hover:scale-105 transition-transform duration-300'
                 />
                 <h3 className='text-xl font-semibold mb-2'>
                   Chief Executive Officer
                 </h3>
+                <p className='text-muted-foreground mb-3'>Christopher Smith</p>
                 <p className='text-muted-foreground mb-3'>
                   Leading strategic vision and growth
                 </p>
@@ -173,42 +174,44 @@ export default function AboutPage() {
             <Card
               className='text-center group hover:shadow-xl transition-all duration-300'
               data-aos='fade-up'
-              data-aos-delay='100'
+              data-aos-delay='200'
             >
               <CardContent className='p-6'>
                 <img
-                  src='/images/cto-professional-headshot.png'
-                  alt='CTO'
-                  className='w-32 h-32 rounded-full mx-auto mb-4 object-cover'
+                  src='/images/IMG-20250831-WA0003.jpg'
+                  alt='COO'
+                  className='w-32 h-32 rounded-full mx-auto mb-4 object-cover hover:scale-105 transition-transform duration-300'
                 />
                 <h3 className='text-xl font-semibold mb-2'>
-                  Chief Technology Officer
+                  Chief Operating Officer
                 </h3>
+                <p className='text-muted-foreground mb-3'>Ajayi Odukoya</p>
                 <p className='text-muted-foreground mb-3'>
-                  Driving technical innovation and excellence
+                  Ensuring operational excellence and delivery
                 </p>
-                <Badge variant='secondary'>20+ Years Experience</Badge>
+                <Badge variant='secondary'>18+ Years Experience</Badge>
               </CardContent>
             </Card>
 
             <Card
               className='text-center group hover:shadow-xl transition-all duration-300'
               data-aos='fade-up'
-              data-aos-delay='200'
+              data-aos-delay='100'
             >
               <CardContent className='p-6'>
                 <img
-                  src='/images/coo-professional-headshot.png'
-                  alt='COO'
-                  className='w-32 h-32 rounded-full mx-auto mb-4 object-cover'
+                  src='/images/IMG-20250831-WA0001.jpg'
+                  alt='CTO'
+                  className='w-32 h-32 rounded-full mx-auto mb-4 object-cover hover:scale-105 transition-transform duration-300'
                 />
                 <h3 className='text-xl font-semibold mb-2'>
-                  Chief Operating Officer
+                  Chief Technology Officer
                 </h3>
+                <p className='text-muted-foreground mb-3'>Olumide Adebayo</p>
                 <p className='text-muted-foreground mb-3'>
-                  Ensuring operational excellence and delivery
+                  Driving technical innovation and excellence
                 </p>
-                <Badge variant='secondary'>18+ Years Experience</Badge>
+                <Badge variant='secondary'>20+ Years Experience</Badge>
               </CardContent>
             </Card>
           </div>
