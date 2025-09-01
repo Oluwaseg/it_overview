@@ -171,6 +171,33 @@ const stats = [
 ];
 
 export default function HomePage() {
+  const orgJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'OCI Tech Solutions',
+    url: 'https://ocitech.com',
+    logo: 'https://ocitech.com/images/logo.png',
+    contactPoint: [
+      {
+        '@type': 'ContactPoint',
+        telephone: '+2348035891932',
+        contactType: 'customer service',
+        email: 'info@oci.com',
+      },
+    ],
+    sameAs: [
+      'https://www.linkedin.com/company/ocitech',
+      'https://twitter.com/ocitech',
+    ],
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress:
+        'Block 2, Road 2, Diamond Estate, Lasu-Igando Expressway, Isheri',
+      addressLocality: 'Lagos',
+      addressCountry: 'Nigeria',
+      postalCode: '230001',
+    },
+  };
   const [currentSlide, setCurrentSlide] = useState(0);
 
   useEffect(() => {
