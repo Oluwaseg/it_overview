@@ -14,10 +14,22 @@ const defaultSEO: DefaultSeoProps = {
       'OCI Tech Solutions delivers enterprise-grade IT services in cloud, cybersecurity, consulting, and staffing for businesses in Nigeria and globally.',
     images: [
       {
-        url: '/images/logo.png',
-        width: 600,
-        height: 315,
-        alt: 'OCI Tech Solutions Logo',
+        url: '/favicon/android-icon-192x192.png',
+        width: 192,
+        height: 192,
+        alt: 'OCI Tech Solutions Favicon',
+      },
+      {
+        url: '/favicon/apple-icon-180x180.png',
+        width: 180,
+        height: 180,
+        alt: 'OCI Tech Solutions Apple Icon',
+      },
+      {
+        url: '/favicon/favicon-96x96.png',
+        width: 96,
+        height: 96,
+        alt: 'OCI Tech Solutions Favicon',
       },
     ],
   },
@@ -30,7 +42,7 @@ const defaultSEO: DefaultSeoProps = {
     {
       name: 'keywords',
       content:
-        'IT consulting, cloud services, cybersecurity, staffing, Nigeria, OCI Tech Solutions',
+        'IT consulting, cloud services, cybersecurity, staffing, Nigeria, OCI Tech Solutions, digital transformation, enterprise IT, Lagos',
     },
     {
       name: 'author',
@@ -39,6 +51,14 @@ const defaultSEO: DefaultSeoProps = {
     {
       name: 'robots',
       content: 'index, follow',
+    },
+    {
+      name: 'theme-color',
+      content: '#ffffff',
+    },
+    {
+      name: 'msapplication-TileColor',
+      content: '#ffffff',
     },
   ],
 };
