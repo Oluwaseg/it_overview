@@ -43,12 +43,12 @@ const contactInfo = [
     details: [
       {
         label: 'Customer Support',
-        value: '09016101268',
+        value: '+2349016101268',
         link: 'tel:+2349016101268',
       },
       {
         label: 'HR Department',
-        value: '08035891932',
+        value: '+2348035891932',
         link: 'tel:+2348035891932',
       },
     ],
@@ -60,7 +60,7 @@ const contactInfo = [
       {
         label: 'Head Office',
         value:
-          'Block 2, Road 2, Diamond Estate, Lasu-Igando Expressway, Isheri, Lagos State, Nigeria 230001',
+          'Block 2, Road 2, Diamond Estate, Lasu-Igando Expressway, Isheri, Lagos State, Nigeria ',
         link: undefined,
       },
       {
@@ -112,23 +112,34 @@ export default function ContactPage() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 2000));
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+
+      if (res.ok) {
+        setIsSubmitted(true);
+        setFormData({
+          name: '',
+          email: '',
+          company: '',
+          inquiryType: '',
+          message: '',
+        });
+
+        // Reset success state after 3s
+        setTimeout(() => setIsSubmitted(false), 3000);
+      } else {
+        alert('Something went wrong. Please try again later.');
+      }
+    } catch (err) {
+      console.error(err);
+      alert('Error sending message.');
+    }
 
     setIsSubmitting(false);
-    setIsSubmitted(true);
-
-    // Reset form after 3 seconds
-    setTimeout(() => {
-      setIsSubmitted(false);
-      setFormData({
-        name: '',
-        email: '',
-        company: '',
-        inquiryType: '',
-        message: '',
-      });
-    }, 3000);
   };
 
   const handleChange = (
@@ -397,7 +408,7 @@ export default function ContactPage() {
                       Lasu-Igando Expressway, Isheri
                     </p>
                     <p className='text-muted-foreground'>
-                      Lagos State, Nigeria 230001
+                      Lagos State, Nigeria
                     </p>
                   </div>
                 </div>
@@ -460,7 +471,7 @@ export default function ContactPage() {
                         href='tel:+2349016101268'
                         className='hover:text-foreground transition-colors'
                       >
-                        09016101268
+                        +2349016101268
                       </a>
                     </p>
                     <p className='text-muted-foreground'>
@@ -469,7 +480,7 @@ export default function ContactPage() {
                         href='tel:+2348035891932'
                         className='hover:text-foreground transition-colors'
                       >
-                        08035891932
+                        +2348035891932
                       </a>
                     </p>
                   </div>

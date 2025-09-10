@@ -118,7 +118,7 @@ export function Footer() {
                       href='tel:+2349016101268'
                       className='hover:text-primary-foreground transition-colors'
                     >
-                      09016101268
+                      +2349016101268
                     </a>
                   </div>
                   <div className='text-primary-foreground/80'>
@@ -127,7 +127,7 @@ export function Footer() {
                       href='tel:+2348035891932'
                       className='hover:text-primary-foreground transition-colors'
                     >
-                      08035891932
+                      +2348035891932
                     </a>
                   </div>
                 </div>
@@ -145,7 +145,7 @@ export function Footer() {
                     Lasu-Igando Expressway, Isheri
                   </div>
                   <div className='text-primary-foreground/80'>
-                    Lagos State, Nigeria 230001
+                    Lagos State, Nigeria
                   </div>
                 </div>
               </div>
