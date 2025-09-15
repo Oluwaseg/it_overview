@@ -185,7 +185,7 @@ export default function AboutPage() {
                 <h3 className='text-xl font-semibold mb-2'>
                   Chief Operating Officer
                 </h3>
-                <p className='text-muted-foreground mb-3'>Ajayi Odukoya</p>
+                <p className='text-muted-foreground mb-3'>Oladapo Ojo</p>
                 <p className='text-muted-foreground mb-3'>
                   Ensuring operational excellence and delivery
                 </p>

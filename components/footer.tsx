@@ -156,7 +156,7 @@ export function Footer() {
         {/* Bottom copyright */}
         <div className='border-t border-primary-foreground/20 mt-8 pt-8 text-center'>
           <p className='text-primary-foreground/80'>
-            © 2025 OCI Tech Solutions Limited. All rights reserved.
+            © 2022 OCI Tech Solutions Limited. All rights reserved.
           </p>
         </div>
       </div>
