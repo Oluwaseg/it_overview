@@ -16,7 +16,7 @@ export default async function handler(
 
     await transporter.sendMail({
       from: '"OCI Website" <info@ocitech.tech>',
-      to: 'info@ocitech.tech',
+      to: ['info@ocitech.tech', 'oluwatobiojo@yahoo.com', 'oladapoabel@gmail.com'],
       replyTo: email,
       subject: `New Inquiry: ${inquiryType || 'General'} from ${name}`,
       text: `
