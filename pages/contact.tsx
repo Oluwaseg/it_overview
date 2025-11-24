@@ -17,23 +17,23 @@ const contactInfo = [
     details: [
       {
         label: 'General Inquiries',
-        value: 'info@oci.com',
-        link: 'mailto:info@oci.com',
+        value: 'info@ocitech.tech',
+        link: 'mailto:info@ocitech.tech',
       },
       {
         label: 'Sales & Solutions',
-        value: 'sales@oci.com',
-        link: 'mailto:sales@oci.com',
+        value: 'sales@ocitech.tech',
+        link: 'mailto:sales@ocitech.tech',
       },
       {
         label: 'HR & Employment',
-        value: 'hr@oci.com',
-        link: 'mailto:hr@oci.com',
+        value: 'hr@ocitech.tech',
+        link: 'mailto:hr@ocitech.tech',
       },
       {
         label: 'Customer Support',
-        value: 'support@oci.com',
-        link: 'mailto:support@oci.com',
+        value: 'support@ocitech.tech',
+        link: 'mailto:support@ocitech.tech',
       },
     ],
   },
@@ -459,10 +459,10 @@ export default function ContactPage() {
                     </h3>
                     <p className='text-muted-foreground'>
                       <a
-                        href='mailto:info@oci.com'
+                        href='mailto:info@ocitech.tech'
                         className='hover:text-foreground transition-colors'
                       >
-                        info@oci.com
+                        info@ocitech.tech
                       </a>
                     </p>
                     <p className='text-muted-foreground'>
