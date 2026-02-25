@@ -93,6 +93,24 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* Corporate Office Section */}
+      <section className='py-20'>
+        <div className='max-w-2xl mx-auto px-4 sm:px-6 lg:px-8'>
+          <div className='text-center mb-8' data-aos='fade-up'>
+            <h2 className='text-3xl md:text-4xl font-bold text-foreground mb-4'>
+              Corporate Office
+            </h2>
+            <p className='text-xl text-muted-foreground max-w-xl mx-auto'>
+              1217 Gable Breeze Drive
+              <br />
+              Katy, Texas 77493
+              <br />
+              Tel: 1 (832)-361-6901
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Company Story */}
       <section className='py-20'>
         <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
@@ -156,14 +174,14 @@ export default function AboutPage() {
             >
               <CardContent className='p-6'>
                 <img
-                  src='/images/IMG-20250831-WA0002.jpg'
-                  alt='CEO'
+                  src='/images/logo.png'
+                  alt='Chief Executive Officer Oluwatobi O Ojo'
                   className='w-32 h-32 rounded-full mx-auto mb-4 object-cover hover:scale-105 transition-transform duration-300'
                 />
                 <h3 className='text-xl font-semibold mb-2'>
                   Chief Executive Officer
                 </h3>
-                <p className='text-muted-foreground mb-3'>Christopher Smith</p>
+                <p className='text-muted-foreground mb-3'>Oluwatobi O Ojo</p>
                 <p className='text-muted-foreground mb-3'>
                   Leading strategic vision and growth
                 </p>

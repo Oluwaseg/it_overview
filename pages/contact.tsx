@@ -393,6 +393,24 @@ export default function ContactPage() {
             </div>
             <div>
               <div className='space-y-6'>
+                {/* US Corporate Office */}
+                <div className='flex items-start space-x-4'>
+                  <div className='p-3 bg-secondary/10 rounded-lg'>
+                    <MapPin className='h-6 w-6 text-secondary' />
+                  </div>
+                  <div>
+                    <h3 className='text-xl font-semibold text-foreground mb-2'>
+                      Corporate Office (USA)
+                    </h3>
+                    <p className='text-muted-foreground'>
+                      1217 Gable Breeze Drive
+                    </p>
+                    <p className='text-muted-foreground'>Katy, Texas 77493</p>
+                    <p className='text-muted-foreground'>
+                      Tel: 1 (832)-361-6901
+                    </p>
+                  </div>
+                </div>
                 <div className='flex items-start space-x-4'>
                   <div className='p-3 bg-secondary/10 rounded-lg'>
                     <MapPin className='h-6 w-6 text-secondary' />
