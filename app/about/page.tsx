@@ -144,7 +144,7 @@ export default function AboutPage() {
             >
               <CardContent className='p-6'>
                 <img
-                  src='/images/logo.png'
+                  src='/images/IMG-20250831-WA0002.jpeg'
                   alt='Chief Executive Officer Oluwatobi O Ojo'
                   className='w-32 h-32 rounded-full mx-auto mb-4 object-cover hover:scale-105 transition-transform duration-300'
                 />
@@ -155,7 +155,6 @@ export default function AboutPage() {
                 <p className='text-muted-foreground mb-3'>
                   Leading strategic vision and growth
                 </p>
-                <Badge variant='secondary'>25+ Years Experience</Badge>
               </CardContent>
             </Card>
 
@@ -177,7 +176,6 @@ export default function AboutPage() {
                 <p className='text-muted-foreground mb-3'>
                   Ensuring operational excellence and delivery
                 </p>
-                <Badge variant='secondary'>18+ Years Experience</Badge>
               </CardContent>
             </Card>
 
@@ -199,7 +197,6 @@ export default function AboutPage() {
                 <p className='text-muted-foreground mb-3'>
                   Driving technical innovation and excellence
                 </p>
-                <Badge variant='secondary'>20+ Years Experience</Badge>
               </CardContent>
             </Card>
           </div>
