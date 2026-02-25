@@ -58,9 +58,19 @@ const contactInfo = [
     title: 'Visit Us',
     details: [
       {
+        label: 'Corporate Office (USA)',
+        value: '1217 Gable Breeze Drive, Katy, Texas 77493',
+        link: undefined,
+      },
+      {
+        label: 'Corporate Office Phone',
+        value: 'Tel: 1 (832)-361-6901',
+        link: 'tel:18323616901',
+      },
+      {
         label: 'Head Office',
         value:
-          'Block 2, Road 2, Diamond Estate, Lasu-Igando Expressway, Isheri, Lagos State, Nigeria ',
+          'Block 2, Road 2, Diamond Estate, Lasu-Igando Expressway, Isheri, Lagos State, Nigeria',
         link: undefined,
       },
       {
