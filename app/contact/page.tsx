@@ -8,7 +8,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { CheckCircle, Mail, MapPin, Phone, Send } from 'lucide-react';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 const contactInfo = [
   {
@@ -96,17 +96,6 @@ export default function ContactPage() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
-
-  useEffect(() => {
-    if (typeof window !== 'undefined' && window.AOS) {
-      window.AOS.init({
-        duration: 800,
-        easing: 'ease-in-out',
-        once: true,
-        offset: 100,
-      });
-    }
-  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

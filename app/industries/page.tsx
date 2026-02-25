@@ -182,15 +182,6 @@ const stats = [
 
 export default function IndustriesPage() {
   useEffect(() => {
-    if (typeof window !== 'undefined' && window.AOS) {
-      window.AOS.init({
-        duration: 800,
-        easing: 'ease-in-out',
-        once: true,
-        offset: 100,
-      });
-    }
-
     const handleHashNavigation = () => {
       const hash = window.location.hash.substring(1);
       if (hash) {
@@ -260,18 +251,18 @@ export default function IndustriesPage() {
           industry.title === 'Healthcare'
             ? 'healthcare'
             : industry.title === 'Financial Services'
-            ? 'financial-services'
-            : industry.title === 'Manufacturing'
-            ? 'manufacturing'
-            : industry.title === 'Energy & Utilities'
-            ? 'energy-utilities'
-            : industry.title === 'Insurance'
-            ? 'insurance'
-            : industry.title === 'Life Sciences'
-            ? 'life-sciences'
-            : industry.title === 'Public Sector'
-            ? 'public-sector'
-            : 'technology-media';
+              ? 'financial-services'
+              : industry.title === 'Manufacturing'
+                ? 'manufacturing'
+                : industry.title === 'Energy & Utilities'
+                  ? 'energy-utilities'
+                  : industry.title === 'Insurance'
+                    ? 'insurance'
+                    : industry.title === 'Life Sciences'
+                      ? 'life-sciences'
+                      : industry.title === 'Public Sector'
+                        ? 'public-sector'
+                        : 'technology-media';
 
         return (
           <section

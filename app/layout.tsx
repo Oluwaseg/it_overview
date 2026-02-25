@@ -1,13 +1,11 @@
-import { Footer } from '@/components/footer';
-import { Navigation } from '@/components/navigation';
-import { ScrollToTop } from '@/components/scroll-to-top';
-import defaultSEO from '@/lib/seo-config';
-import { DefaultSeo } from 'next-seo';
-import type { AppProps } from 'next/app';
+import AOSInitializer from '@/lib/aos-initializer';
 import { Montserrat, Poppins } from 'next/font/google';
-import Head from 'next/head';
-import { useEffect } from 'react';
+import { Footer } from '../components/footer';
+import { Navigation } from '../components/navigation';
+import { ScrollToTop } from '../components/scroll-to-top';
 import '../public/styles/globals.css';
+import { metadata } from './metadata';
+
 const poppins = Poppins({
   subsets: ['latin'],
   variable: '--font-poppins',
@@ -19,36 +17,16 @@ const montserrat = Montserrat({
   weight: ['400', '700'],
 });
 
-declare global {
-  interface Window {
-    AOS: any;
-  }
-}
+export { metadata };
 
-function MyApp({ Component, pageProps }: AppProps) {
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const script = document.createElement('script');
-      script.src = 'https://unpkg.com/aos@2.3.1/dist/aos.js';
-      script.async = true;
-      document.body.appendChild(script);
-      script.onload = () => {
-        if (window.AOS) {
-          window.AOS.init({
-            duration: 800,
-            easing: 'ease-in-out',
-            once: true,
-            offset: 100,
-            disable: false,
-          });
-        }
-      };
-    }
-  }, []);
-
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <>
-      <Head>
+    <html lang='en'>
+      <head>
         <link
           rel='apple-touch-icon'
           sizes='180x180'
@@ -74,21 +52,16 @@ function MyApp({ Component, pageProps }: AppProps) {
           content='/favicon/ms-icon-144x144.png'
         />
         <meta name='theme-color' content='#ffffff' />
-      </Head>
-      {/* Default SEO config */}
-      <DefaultSeo {...defaultSEO} />
-      <div
+      </head>
+      <body
         className={`font-sans antialiased ${poppins.variable} ${montserrat.variable}`}
       >
+        <AOSInitializer />
         <Navigation />
-        <main className='min-h-screen overflow-hidden'>
-          <Component {...pageProps} />
-        </main>
+        <main className='min-h-screen overflow-hidden'>{children}</main>
         <Footer />
         <ScrollToTop />
-      </div>
-    </>
+      </body>
+    </html>
   );
 }
-
-export default MyApp;

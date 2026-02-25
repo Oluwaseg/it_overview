@@ -201,16 +201,6 @@ export default function HomePage() {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   useEffect(() => {
-    // Initialize AOS when component mounts
-    if (typeof window !== 'undefined' && window.AOS) {
-      window.AOS.init({
-        duration: 800,
-        easing: 'ease-in-out',
-        once: true,
-        offset: 100,
-      });
-    }
-
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
     }, 5000);

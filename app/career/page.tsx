@@ -24,7 +24,6 @@ import {
 } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect } from 'react';
 
 const jobOpenings = [
   {
@@ -151,17 +150,6 @@ const stats = [
 ];
 
 export default function CareerPage() {
-  useEffect(() => {
-    if (typeof window !== 'undefined' && window.AOS) {
-      window.AOS.init({
-        duration: 800,
-        easing: 'ease-in-out',
-        once: true,
-        offset: 100,
-      });
-    }
-  }, []);
-
   return (
     <div className='pt-16'>
       {/* Hero Section */}

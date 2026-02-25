@@ -9,7 +9,6 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import { Award, Globe, Heart, Lightbulb, Target, Users } from 'lucide-react';
-import { useEffect } from 'react';
 
 const values = [
   {
@@ -60,17 +59,6 @@ const achievements = [
 ];
 
 export default function AboutPage() {
-  useEffect(() => {
-    if (typeof window !== 'undefined' && window.AOS) {
-      window.AOS.init({
-        duration: 800,
-        easing: 'ease-in-out',
-        once: true,
-        offset: 100,
-      });
-    }
-  }, []);
-
   return (
     <div className='pt-16'>
       {/* Hero Section */}

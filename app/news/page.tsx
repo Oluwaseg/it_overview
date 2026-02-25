@@ -20,7 +20,6 @@ import {
   Users,
 } from 'lucide-react';
 import Image from 'next/image';
-import { useEffect } from 'react';
 
 const newsArticles = [
   {
@@ -100,17 +99,6 @@ const categories = [
 ];
 
 export default function NewsPage() {
-  useEffect(() => {
-    if (typeof window !== 'undefined' && window.AOS) {
-      window.AOS.init({
-        duration: 800,
-        easing: 'ease-in-out',
-        once: true,
-        offset: 100,
-      });
-    }
-  }, []);
-
   const featuredArticles = newsArticles.filter((article) => article.featured);
   const regularArticles = newsArticles.filter((article) => !article.featured);
 

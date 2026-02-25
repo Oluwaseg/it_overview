@@ -27,7 +27,6 @@ import {
 } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect } from 'react';
 
 const serviceCategories = [
   {
@@ -178,17 +177,6 @@ const industries = [
 ];
 
 export default function ServicesPage() {
-  useEffect(() => {
-    if (typeof window !== 'undefined' && window.AOS) {
-      window.AOS.init({
-        duration: 800,
-        easing: 'ease-in-out',
-        once: true,
-        offset: 100,
-      });
-    }
-  }, []);
-
   return (
     <div className='pt-16'>
       {/* Hero Section */}
@@ -218,10 +206,10 @@ export default function ServicesPage() {
             category.title === 'Cloud & Infrastructure'
               ? 'cloud-infrastructure'
               : category.title === 'Consulting Services'
-              ? 'consulting-services'
-              : category.title === 'IT Staffing'
-              ? 'it-staffing'
-              : 'it-security'
+                ? 'consulting-services'
+                : category.title === 'IT Staffing'
+                  ? 'it-staffing'
+                  : 'it-security'
           }
           className={`py-20 overflow-hidden ${
             categoryIndex % 2 === 1 ? 'bg-muted/30' : ''
